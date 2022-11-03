@@ -29,12 +29,18 @@ static void activate (GtkApplication* app, gpointer user_data) {
     gtk_window_set_default_size (GTK_WINDOW (window), 600, 600);
 
     GtkWidget* box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-    gtk_box_set_spacing(GTK_BOX(box), 20);
     gtk_window_set_child(GTK_WINDOW(window), box);
+
+    GtkWidget* msgLabel = gtk_label_new("Message");
+    gtk_label_set_xalign(GTK_LABEL(msgLabel), 0);
+    set_margin(msgLabel, 15);
+    gtk_widget_set_margin_bottom(msgLabel, 2);
+    gtk_box_append(GTK_BOX(box), msgLabel);
 
     GtkWidget* textInput = gtk_text_new();
     gtk_text_set_placeholder_text(GTK_TEXT(textInput), "Text...");
     set_margin(textInput, 15);
+    gtk_widget_set_margin_bottom(textInput, 2);
     gtk_box_append(GTK_BOX(box), textInput);
 
     GtkWidget* btn = gtk_button_new_with_label("Calculate");
